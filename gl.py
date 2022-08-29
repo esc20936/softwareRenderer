@@ -25,9 +25,13 @@ def dword(d):
     return struct.pack('=l', d)
 
 def color(r, g, b):
-    return bytes([int(b * 255),
-                  int(g * 255),
-                  int(r * 255)] )
+    try:
+    
+        return bytes([int((0 if b< 0 else b) * 255),
+                    int((0 if g< 0 else g) * 255),
+                    int((0 if r< 0 else r) * 255)] )
+    except:
+        print(r, g, b)
 
 def baryCoords(A, B, C, P):
 

@@ -33,7 +33,7 @@ def flat(render, **kwargs):
     b *= intensity
     g *= intensity
     r *= intensity
-    print(r,g,b)
+    # print(r,g,b)
     if intensity > 0:
         return r, g, b
     else:
@@ -116,16 +116,16 @@ def negative(render, **kwargs):
 
     # inverse color (negative)
     # print(b, g, r)
-    b = 1 - b
-    g = 1 - g
-    r = 1 - r
+    b = 0.8 - b
+    g = 0.8 - g
+    r = 0.8 - r
 
 
 
     if intensity > 0:
         return r, g, b
     else:
-        return 1,1,1
+        return 0.85,0.85,0.85
 
 
 def sinFun(render, **kwargs):
@@ -144,7 +144,8 @@ def sinFun(render, **kwargs):
         tV = tA[1] * u + tB[1] * v + tC[1] * w
 
         texColor = render.active_texture.getColor(tU, tV)
-
+        if texColor == None:
+            texColor = [0,0,0]
         b *= texColor[2]
         g *= texColor[1]
         r *= texColor[0]
